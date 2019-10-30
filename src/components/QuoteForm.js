@@ -19,12 +19,7 @@ class QuoteForm extends Component {
     // Handle Form Submit event default
     e.preventDefault()
     // Create quote object from state
-    const quote = {
-      author: this.state.author,
-      content: this.state.content,
-      id: uuid(),
-      votes: 0
-    }
+    const quote = {...this.state, id: uuid()}
     // Pass quote object to action creator
     this.props.addQuote(quote)
     // Update component state to return to default state
@@ -75,4 +70,4 @@ class QuoteForm extends Component {
 }
 
 //add arguments to connect as needed
-export default connect()(QuoteForm);
+export default connect(null, {addQuote})(QuoteForm);
